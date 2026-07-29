@@ -394,3 +394,4 @@ if prompt:
     write_transcript(st.session_state.transcript_path, transcript)
     save_active_session()
     st.rerun()
+#a
