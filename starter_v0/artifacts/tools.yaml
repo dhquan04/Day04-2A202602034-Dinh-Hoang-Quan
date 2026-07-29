@@ -98,21 +98,29 @@ tools:
       required: [query]
 
   - name: papers
-    description: "Tìm bài báo khoa học."
+    description: "Tìm kiếm bài báo khoa học trên arXiv theo từ khóa/chủ đề. Dùng khi người dùng muốn tìm bài báo mới hoặc tìm kiếm tổng quan."
     parameters:
       type: object
       properties:
-        query: {type: string, default: "", description: "Từ khóa"}
-        max_results: {type: integer, default: 5, description: "Số lượng"}
-        sort_by: {type: string, enum: [relevance, lastUpdatedDate, submittedDate], default: "relevance", description: "Sắp xếp"}
+        query: {type: string, default: "", description: "Từ khóa tìm kiếm (vd: transformer attention)"}
+        max_results: {type: integer, default: 5, description: "Số lượng bài báo trả về (1-10)"}
+        sort_by: {type: string, enum: [relevance, lastUpdatedDate, submittedDate], default: "relevance", description: "Tiêu chí sắp xếp"}
       required: [query]
 
   - name: paper_text
-    description: "Lấy nội dung text của một bài báo."
+    description: "Tải file PDF bài báo từ arXiv và đọc/trích xuất nội dung văn bản chi tiết bên trong bài báo. Dùng khi đã có arXiv ID/URL và cần đọc nội dung."
     parameters:
       type: object
       properties:
-        arxiv_url: {type: string, default: "", description: "ID hoặc địa chỉ"}
-        max_pages: {type: integer, default: 5, description: "Số trang"}
-        max_chars: {type: integer, default: 8000, description: "Số ký tự"}
+        arxiv_url: {type: string, default: "", description: "arXiv ID (vd: 1706.03762) hoặc URL bài báo"}
+        max_pages: {type: integer, default: 5, description: "Số trang tối đa cần đọc"}
+        max_chars: {type: integer, default: 8000, description: "Số ký tự tối đa trả về"}
+      required: [arxiv_url]
+
+  - name: paper_bibtex
+    description: "Tạo trích dẫn BibTeX chuẩn cho bài báo từ arXiv ID hoặc URL. Dùng khi người dùng xin trích dẫn, cite, hoặc bibtex."
+    parameters:
+      type: object
+      properties:
+        arxiv_url: {type: string, default: "", description: "arXiv ID (vd: 1706.03762) hoặc URL bài báo"}
       required: [arxiv_url]
