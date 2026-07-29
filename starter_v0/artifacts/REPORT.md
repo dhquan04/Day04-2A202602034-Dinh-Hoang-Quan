@@ -7,8 +7,15 @@
 ## Team
 
 - Team:
-- Members:
-- Provider/model:
+
+| Role | Tên thành viên | Mã sinh viên |
+|---|---|---|
+| Eval | Hoàng Thanh Sơn | 2A202601818 |
+| Tools | Vũ Bảo Chinh | 2A202601448 |
+| System prompt | Trịnh Hoàng Nam | 2A202601376 |
+| UI/UX | Đinh Hoàng Quân | 2A202602034 |
+
+- Provider/model: OpenRouter / openai/gpt-4o-mini
 
 ---
 
@@ -16,33 +23,31 @@
 
 ## A1. Agent này làm được gì
 
-> 1–2 câu mô tả agent dùng để làm gì.
-
-Ví dụ: "Research agent: tìm tin theo từ khóa / theo tài khoản, đọc URL và tổng hợp thành digest."
+**Research Paper Scout** hỗ trợ tìm bài báo khoa học trên arXiv theo chủ đề, đọc nội dung PDF của paper được chọn và tạo bản tóm tắt có nguồn. Agent cũng có thể sinh trích dẫn BibTeX từ arXiv ID/URL để người dùng chèn trực tiếp vào báo cáo LaTeX.
 
 **Link dùng thử (truy cập được trong showdown):**
 
-> Dán public URL nếu người khác cần mở từ máy riêng; localhost cũng được nếu demo trực tiếp trên máy trình chiếu. Streamlit được khuyến nghị, nhưng nhóm có thể dùng bất kỳ framework nào.
+> UI chạy bằng Streamlit. Khi demo trực tiếp trên máy trình chiếu, dùng URL sau:
 >
-> URL:
+> URL: `http://localhost:8501`
 
 ## A2. Tool agent có
 
-> Liệt kê các tool agent đang dùng. Mỗi tool 1 dòng: tên + làm được gì.
+> Các tool chính trong workflow Research Paper Scout:
 
 | Tên tool | Làm được gì | Tool mới nhóm thêm? |
 |---|---|---|
-| clarify | hỏi lại người dùng khi thiếu thông tin | không |
-|  |  |  |
-|  |  |  |
+| papers | tìm paper trên arXiv theo từ khóa/chủ đề | không |
+| paper_text | tải PDF arXiv và trích text để đọc/tóm tắt paper | không |
+| paper_bibtex | tạo trích dẫn BibTeX chuẩn từ arXiv ID hoặc URL | có |
 
 ## A3. Câu hỏi mẫu để thử
 
-> 3–5 câu hỏi/yêu cầu mẫu để team khác tự thử agent ngay.
-
-1.
-2.
-3.
+1. `Tìm 3 paper về thuật toán RRT.`
+2. `So sánh RRT và RRT*.`
+3. `Đọc paper arXiv 1706.03762 và tóm tắt phương pháp, kết quả chính trong 500 từ.`
+4. `Cho tôi BibTeX chuẩn của paper 1706.03762 để chèn vào báo cáo LaTeX.`
+5. `Tôi đang viết tổng quan về Transformer. Hãy tìm paper gốc, tóm tắt và tạo luôn BibTeX.`
 
 ## A4. Kịch bản demo đã rehearse
 
@@ -50,7 +55,10 @@ Ví dụ: "Research agent: tìm tin theo từ khóa / theo tài khoản, đọc 
 
 | Scenario | Tool trace cần thấy | Câu chuyện cải thiện version | Fallback run/transcript |
 |---|---|---|---|
-|  |  |  |  |
+| Tìm 3 paper về RRT | `papers(query="RRT", max_results=3)` → `paper_text` | v0 là baseline; v1 cải thiện routing/tool declaration, đưa case accuracy base từ 65% lên 90%. | Transcript: `live_openrouter_20260729T161437109390.transcript.json` |
+| So sánh RRT và RRT* | `lookup` + `papers` → `paper_text` | Showcase một yêu cầu nghiên cứu dùng nhiều nguồn/tool, không chỉ một lượt tìm kiếm. | Transcript: `live_openrouter_20260729T161226261182.transcript.json` |
+| Tổng quan Transformer + BibTeX | `papers` → `paper_text` → `paper_bibtex` | Bổ sung capability mới để tạo citation có thể dùng trực tiếp trong LaTeX. | Transcript: `live_openrouter_20260729T163020005491.transcript.json` |
+| Tìm paper tiếng Việt về Machine Learning | `papers` + `lookup` → `paper_text` → `paper_bibtex` | Cho thấy agent theo dõi ngữ cảnh nhiều lượt và kết hợp tìm kiếm, đọc paper, tạo citation. | Transcript: `live_openrouter_20260729T161558316542.transcript.json` |
 
 ---
 

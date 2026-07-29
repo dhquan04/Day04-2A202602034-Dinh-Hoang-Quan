@@ -1,0 +1,80 @@
+{
+  "transcript_id": "v0_openrouter_20260729T151134924697",
+  "version": "v0",
+  "artifact_version": "v0+peb1c8179815b+t6cdb53d5d7b8",
+  "prompt_hash": "eb1c8179815bd79d34de7d326420bb99b3072e6e8ae96464c02d4411f905fc68",
+  "tools_hash": "6cdb53d5d7b8de80d60b298b1357f462cedbedfae261d5ba60b08ccc401687c5",
+  "provider": "openrouter",
+  "model": null,
+  "system_prompt": "C:\\AI action\\Lab\\Day04-2A202602034-Dinh-Hoang-Quan\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "C:\\AI action\\Lab\\Day04-2A202602034-Dinh-Hoang-Quan\\starter_v0\\artifacts\\tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-07-29T15:11:34",
+  "updated_at": "2026-07-29T15:12:21",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-07-29T15:12:13",
+      "user": "TÌm 3 paper về pytago",
+      "status": "answered",
+      "assistant_text": "I couldn't find any papers related to \"pytago\" in the available databases. If you have any other topics or keywords in mind, feel free to let me know!",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "papers",
+              "args": {
+                "query": "pytago",
+                "max_results": 3
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "papers",
+              "args": {
+                "query": "pytago",
+                "max_results": 3
+              },
+              "result": {
+                "tool": "arxiv_search",
+                "query": "pytago",
+                "api_query": "all:pytago",
+                "total_results": 0,
+                "items": [],
+                "rate_limit_note": "arXiv may return 429 if called too frequently; this tool waits at least 3 seconds between requests in-process."
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "I couldn't find any papers related to \"pytago\" in the available databases. If you have any other topics or keywords in mind, feel free to let me know!",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "papers",
+          "args": {
+            "query": "pytago",
+            "max_results": 3
+          },
+          "result": {
+            "tool": "arxiv_search",
+            "query": "pytago",
+            "api_query": "all:pytago",
+            "total_results": 0,
+            "items": [],
+            "rate_limit_note": "arXiv may return 429 if called too frequently; this tool waits at least 3 seconds between requests in-process."
+          }
+        }
+      ],
+      "ended_at": "2026-07-29T15:12:21"
+    }
+  ]
+}

@@ -1,0 +1,288 @@
+{
+  "transcript_id": "live_openrouter_20260729T161437109390",
+  "version": "live",
+  "artifact_version": "live+p53a2044bf112+tb636264d3de6",
+  "prompt_hash": "53a2044bf112f4921f0a0b5ae528f3309133684ba30a7e47139a17cf8f9ea2cc",
+  "tools_hash": "b636264d3de6c4c14724e907f622d10f17e5386235c1783b9d8aee40cd68e37f",
+  "provider": "openrouter",
+  "model": null,
+  "system_prompt": "C:\\AI action\\Lab\\Day04-2A202602034-Dinh-Hoang-Quan\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "C:\\AI action\\Lab\\Day04-2A202602034-Dinh-Hoang-Quan\\starter_v0\\artifacts\\tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-07-29T16:14:37",
+  "updated_at": "2026-07-29T16:15:43",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-07-29T16:14:52",
+      "user": "Tìm 3 paper về thuật toán RRT",
+      "status": "answered",
+      "assistant_text": "Here are three papers related to the RRT (Rapidly-exploring Random Tree) algorithm:\n\n1. **[SPIN: distilling Skill-RRT for long-horizon prehensile and non-prehensile manipulation](http://arxiv.org/abs/2502.18015v3)**\n   - **Authors**: Haewon Jung, Donguk Lee, Haecheol Park, JunHyeop Kim, Beomjoon Kim\n   - **Published**: February 25, 2025\n   - **Summary**: This paper presents SPIN, a framework that distills a computationally intensive planning algorithm into a policy via imitation learning. It introduces Skill-RRT, an extension of RRT that incorporates skill applicability checks and intermediate object pose sampling for solving long-horizon manipulation tasks.\n\n2. **[RRT and RRT* Using Vehicle Dynamics](http://arxiv.org/abs/2206.10533v1)**\n   - **Author**: Abhish Khanal\n   - **Published**: May 29, 2022\n   - **Summary**: This work modifies the RRT and RRT* algorithms to generate trajectories that a vehicle with dynamic constraints can follow. It models the vehicle as a Dubins car to simplify the trajectory generation process.\n\n3. **[BTO-RRT: A rapid, optimal, smooth and point cloud-based path planning algorithm](http://arxiv.org/abs/2211.06801v1)**\n   - **Authors**: Zhaoliang Zheng, Thomas R. Bewley, Falko Kuester, Jiaqi Ma\n   - **Published**: November 13, 2022\n   - **Summary**: This paper explores a rapid and optimal path-planning algorithm for robots in point cloud environments. It presents a bi-directional target-oriented point planning algorithm that directly uses point clouds to compute optimized and dynamically feasible trajectories.\n\nFeel free to ask if you need more information or specific details about any of these papers!",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "papers",
+              "args": {
+                "query": "RRT algorithm",
+                "max_results": 3
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "papers",
+              "args": {
+                "query": "RRT algorithm",
+                "max_results": 3
+              },
+              "result": {
+                "tool": "arxiv_search",
+                "query": "RRT algorithm",
+                "api_query": "all:RRT AND all:algorithm",
+                "total_results": 296,
+                "items": [
+                  {
+                    "arxiv_id": "2502.18015v3",
+                    "title": "$\\texttt{SPIN}$: distilling $\\texttt{Skill-RRT}$ for long-horizon prehensile and non-prehensile manipulation",
+                    "summary": "Current robots struggle with long-horizon manipulation tasks requiring sequences of prehensile and non-prehensile skills, contact-rich interactions, and long-term reasoning. We present $\\texttt{SPIN}$ ($\\textbf{S}$kill $\\textbf{P}$lanning to $\\textbf{IN}$ference), a framework that distills a computationally intensive planning algorithm into a policy via imitation learning. We propose $\\texttt{Skill-RRT}$, an extension of RRT that incorporates skill applicability checks and intermediate object pose sampling for solving such long-horizon problems. To chain independently trained skills, we introduce $\\textit{connectors}$, goal-conditioned policies trained to minimize object disturbance during transitions. High-quality demonstrations are generated with $\\texttt{Skill-RRT}$ and distilled through noise-based replay in order to reduce online computation time. The resulting policy, trained entirely in simulation, transfers zero-shot to the real world and achieves over 80% success across three challenging long-horizon manipulation tasks and outperforms state-of-the-art hierarchical RL and planning methods.",
+                    "authors": [
+                      "Haewon Jung",
+                      "Donguk Lee",
+                      "Haecheol Park",
+                      "JunHyeop Kim",
+                      "Beomjoon Kim"
+                    ],
+                    "published": "2025-02-25T09:23:52Z",
+                    "updated": "2025-05-07T05:34:19Z",
+                    "url": "http://arxiv.org/abs/2502.18015v3",
+                    "pdf_url": "https://arxiv.org/pdf/2502.18015v3",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.RO",
+                    "categories": [
+                      "cs.RO"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "2206.10533v1",
+                    "title": "RRT and RRT* Using Vehicle Dynamics",
+                    "summary": "The trajectory derived from RRT and RRT* is zagged. A holonomic drive is able to follow this trajectory. But real-life vehicle which has dynamical constraints cannot follow this trajectory. In this work, we are going to modify the RRT and RRT* algorithm to generate a trajectory that a vehicle with dynamical constraint can follow. The continuous nature of steering control and acceleration control in a real-world vehicle introduces the complexity in its model. To introduce constraint in the vehicle's motion, while reducing the number of control and hence complexity, we are modeling our vehicle as a Dubins car. A Dubins car has only three controls (turning left, turning right, and moving forward) with a fixed velocity which makes our model simple. We use dubins curve (path that dubins car can follow) to trace the trajectory in RRT and RRT* algorithm.",
+                    "authors": [
+                      "Abhish Khanal"
+                    ],
+                    "published": "2022-05-29T18:43:38Z",
+                    "updated": "2022-05-29T18:43:38Z",
+                    "url": "http://arxiv.org/abs/2206.10533v1",
+                    "pdf_url": "https://arxiv.org/pdf/2206.10533v1",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.RO",
+                    "categories": [
+                      "cs.RO"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "2211.06801v1",
+                    "title": "BTO-RRT: A rapid, optimal, smooth and point cloud-based path planning algorithm",
+                    "summary": "This paper explores a rapid, optimal smooth path-planning algorithm for robots (e.g., autonomous vehicles) in point cloud environments. Derivative maps such as dense point clouds, mesh maps, Octomaps, etc. are frequently used for path planning purposes. A bi-directional target-oriented point planning algorithm, directly using point clouds to compute the optimized and dynamically feasible trajectories, is presented in this paper. This approach searches for obstacle-free, low computational cost, smooth, and dynamically feasible paths by analyzing a point cloud of the target environment, using a modified bi-directional and RRT-connect-based path planning algorithm, with a k-d tree-based obstacle avoidance strategy and three-step optimization. This presented approach bypasses the common 3D map discretization, directly leveraging point cloud data and it can be separated into two parts: modified RRT-based algorithm core and the three-step optimization. Simulations on 8 2D maps with different configurations and characteristics are presented to show the efficiency and 2D performance of the proposed algorithm. Benchmark comparison and evaluation with other RRT-based algorithms like RRT, B-RRT, and RRT star are also shown in the paper. Finally, the proposed algorithm successfully achieved different levels of mission goals on three 3D point cloud maps with different densities. The whole simulation proves that not only can our algorithm achieves a better performance on 2D maps compared with other algorithms, but also it can handle different tasks(ground vehicles and UAV applications) on different 3D point cloud maps, which shows the high performance and robustness of the proposed algorithm. The algorithm is open-sourced at \\url{https://github.com/zhz03/BTO-RRT}",
+                    "authors": [
+                      "Zhaoliang Zheng",
+                      "Thomas R. Bewley",
+                      "Falko Kuester",
+                      "Jiaqi Ma"
+                    ],
+                    "published": "2022-11-13T03:46:00Z",
+                    "updated": "2022-11-13T03:46:00Z",
+                    "url": "http://arxiv.org/abs/2211.06801v1",
+                    "pdf_url": "https://arxiv.org/pdf/2211.06801v1",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.RO",
+                    "categories": [
+                      "cs.RO",
+                      "eess.SY"
+                    ]
+                  }
+                ],
+                "rate_limit_note": "arXiv may return 429 if called too frequently; this tool waits at least 3 seconds between requests in-process."
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Here are three papers related to the RRT (Rapidly-exploring Random Tree) algorithm:\n\n1. **[SPIN: distilling Skill-RRT for long-horizon prehensile and non-prehensile manipulation](http://arxiv.org/abs/2502.18015v3)**\n   - **Authors**: Haewon Jung, Donguk Lee, Haecheol Park, JunHyeop Kim, Beomjoon Kim\n   - **Published**: February 25, 2025\n   - **Summary**: This paper presents SPIN, a framework that distills a computationally intensive planning algorithm into a policy via imitation learning. It introduces Skill-RRT, an extension of RRT that incorporates skill applicability checks and intermediate object pose sampling for solving long-horizon manipulation tasks.\n\n2. **[RRT and RRT* Using Vehicle Dynamics](http://arxiv.org/abs/2206.10533v1)**\n   - **Author**: Abhish Khanal\n   - **Published**: May 29, 2022\n   - **Summary**: This work modifies the RRT and RRT* algorithms to generate trajectories that a vehicle with dynamic constraints can follow. It models the vehicle as a Dubins car to simplify the trajectory generation process.\n\n3. **[BTO-RRT: A rapid, optimal, smooth and point cloud-based path planning algorithm](http://arxiv.org/abs/2211.06801v1)**\n   - **Authors**: Zhaoliang Zheng, Thomas R. Bewley, Falko Kuester, Jiaqi Ma\n   - **Published**: November 13, 2022\n   - **Summary**: This paper explores a rapid and optimal path-planning algorithm for robots in point cloud environments. It presents a bi-directional target-oriented point planning algorithm that directly uses point clouds to compute optimized and dynamically feasible trajectories.\n\nFeel free to ask if you need more information or specific details about any of these papers!",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "papers",
+          "args": {
+            "query": "RRT algorithm",
+            "max_results": 3
+          },
+          "result": {
+            "tool": "arxiv_search",
+            "query": "RRT algorithm",
+            "api_query": "all:RRT AND all:algorithm",
+            "total_results": 296,
+            "items": [
+              {
+                "arxiv_id": "2502.18015v3",
+                "title": "$\\texttt{SPIN}$: distilling $\\texttt{Skill-RRT}$ for long-horizon prehensile and non-prehensile manipulation",
+                "summary": "Current robots struggle with long-horizon manipulation tasks requiring sequences of prehensile and non-prehensile skills, contact-rich interactions, and long-term reasoning. We present $\\texttt{SPIN}$ ($\\textbf{S}$kill $\\textbf{P}$lanning to $\\textbf{IN}$ference), a framework that distills a computationally intensive planning algorithm into a policy via imitation learning. We propose $\\texttt{Skill-RRT}$, an extension of RRT that incorporates skill applicability checks and intermediate object pose sampling for solving such long-horizon problems. To chain independently trained skills, we introduce $\\textit{connectors}$, goal-conditioned policies trained to minimize object disturbance during transitions. High-quality demonstrations are generated with $\\texttt{Skill-RRT}$ and distilled through noise-based replay in order to reduce online computation time. The resulting policy, trained entirely in simulation, transfers zero-shot to the real world and achieves over 80% success across three challenging long-horizon manipulation tasks and outperforms state-of-the-art hierarchical RL and planning methods.",
+                "authors": [
+                  "Haewon Jung",
+                  "Donguk Lee",
+                  "Haecheol Park",
+                  "JunHyeop Kim",
+                  "Beomjoon Kim"
+                ],
+                "published": "2025-02-25T09:23:52Z",
+                "updated": "2025-05-07T05:34:19Z",
+                "url": "http://arxiv.org/abs/2502.18015v3",
+                "pdf_url": "https://arxiv.org/pdf/2502.18015v3",
+                "source": "arxiv.org",
+                "primary_category": "cs.RO",
+                "categories": [
+                  "cs.RO"
+                ]
+              },
+              {
+                "arxiv_id": "2206.10533v1",
+                "title": "RRT and RRT* Using Vehicle Dynamics",
+                "summary": "The trajectory derived from RRT and RRT* is zagged. A holonomic drive is able to follow this trajectory. But real-life vehicle which has dynamical constraints cannot follow this trajectory. In this work, we are going to modify the RRT and RRT* algorithm to generate a trajectory that a vehicle with dynamical constraint can follow. The continuous nature of steering control and acceleration control in a real-world vehicle introduces the complexity in its model. To introduce constraint in the vehicle's motion, while reducing the number of control and hence complexity, we are modeling our vehicle as a Dubins car. A Dubins car has only three controls (turning left, turning right, and moving forward) with a fixed velocity which makes our model simple. We use dubins curve (path that dubins car can follow) to trace the trajectory in RRT and RRT* algorithm.",
+                "authors": [
+                  "Abhish Khanal"
+                ],
+                "published": "2022-05-29T18:43:38Z",
+                "updated": "2022-05-29T18:43:38Z",
+                "url": "http://arxiv.org/abs/2206.10533v1",
+                "pdf_url": "https://arxiv.org/pdf/2206.10533v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.RO",
+                "categories": [
+                  "cs.RO"
+                ]
+              },
+              {
+                "arxiv_id": "2211.06801v1",
+                "title": "BTO-RRT: A rapid, optimal, smooth and point cloud-based path planning algorithm",
+                "summary": "This paper explores a rapid, optimal smooth path-planning algorithm for robots (e.g., autonomous vehicles) in point cloud environments. Derivative maps such as dense point clouds, mesh maps, Octomaps, etc. are frequently used for path planning purposes. A bi-directional target-oriented point planning algorithm, directly using point clouds to compute the optimized and dynamically feasible trajectories, is presented in this paper. This approach searches for obstacle-free, low computational cost, smooth, and dynamically feasible paths by analyzing a point cloud of the target environment, using a modified bi-directional and RRT-connect-based path planning algorithm, with a k-d tree-based obstacle avoidance strategy and three-step optimization. This presented approach bypasses the common 3D map discretization, directly leveraging point cloud data and it can be separated into two parts: modified RRT-based algorithm core and the three-step optimization. Simulations on 8 2D maps with different configurations and characteristics are presented to show the efficiency and 2D performance of the proposed algorithm. Benchmark comparison and evaluation with other RRT-based algorithms like RRT, B-RRT, and RRT star are also shown in the paper. Finally, the proposed algorithm successfully achieved different levels of mission goals on three 3D point cloud maps with different densities. The whole simulation proves that not only can our algorithm achieves a better performance on 2D maps compared with other algorithms, but also it can handle different tasks(ground vehicles and UAV applications) on different 3D point cloud maps, which shows the high performance and robustness of the proposed algorithm. The algorithm is open-sourced at \\url{https://github.com/zhz03/BTO-RRT}",
+                "authors": [
+                  "Zhaoliang Zheng",
+                  "Thomas R. Bewley",
+                  "Falko Kuester",
+                  "Jiaqi Ma"
+                ],
+                "published": "2022-11-13T03:46:00Z",
+                "updated": "2022-11-13T03:46:00Z",
+                "url": "http://arxiv.org/abs/2211.06801v1",
+                "pdf_url": "https://arxiv.org/pdf/2211.06801v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.RO",
+                "categories": [
+                  "cs.RO",
+                  "eess.SY"
+                ]
+              }
+            ],
+            "rate_limit_note": "arXiv may return 429 if called too frequently; this tool waits at least 3 seconds between requests in-process."
+          }
+        }
+      ],
+      "ended_at": "2026-07-29T16:15:07"
+    },
+    {
+      "turn_index": 2,
+      "started_at": "2026-07-29T16:15:25",
+      "user": "Tóm tắt 1 trong 3 bài báo vừa tìm được ",
+      "status": "answered",
+      "assistant_text": "Here is a summary of the paper titled **\"SPIN: distilling Skill-RRT for long-horizon prehensile and non-prehensile manipulation\"**:\n\n- **Authors**: Haewon Jung, Donguk Lee, Haecheol Park, JunHyeop Kim, Beomjoon Kim\n- **Published**: May 7, 2025\n- **Link**: [Read the paper](https://arxiv.org/abs/2502.18015)\n\n### Summary:\nThe paper addresses the challenges faced by robots in performing long-horizon manipulation tasks that require a combination of prehensile (grasping) and non-prehensile (pushing, sliding) skills. The authors introduce a framework called SPIN (Skill Planning to INference), which distills a complex planning algorithm into a more efficient policy through imitation learning.\n\nKey contributions include:\n1. **Skill-RRT**: An extension of the RRT algorithm that incorporates skill applicability checks and intermediate object pose sampling to solve long-horizon manipulation problems.\n2. **Connectors**: Goal-conditioned policies that minimize object disturbance during transitions between skills, allowing for the chaining of independently trained skills.\n3. **High-Quality Demonstrations**: Generated using Skill-RRT and distilled through noise-based replay to reduce online computation time.\n\nThe resulting policy, trained entirely in simulation, demonstrates a successful transfer to real-world applications, achieving over 80% success across three challenging manipulation tasks. This approach outperforms existing hierarchical reinforcement learning and planning methods.\n\nThe paper emphasizes the importance of reasoning about the feasibility of skills and how to chain them effectively, addressing the complexities involved in manipulating objects in constrained environments.\n\nFeel free to ask if you need more details or further assistance!",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "paper_text",
+              "args": {
+                "arxiv_url": "2502.18015",
+                "max_pages": 5,
+                "max_chars": 8000
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "paper_text",
+              "args": {
+                "arxiv_url": "2502.18015",
+                "max_pages": 5,
+                "max_chars": 8000
+              },
+              "result": {
+                "tool": "get_arxiv_paper_text",
+                "arxiv_id": "2502.18015",
+                "url": "https://arxiv.org/abs/2502.18015",
+                "pdf_url": "https://arxiv.org/pdf/2502.18015.pdf",
+                "pdf_path": "C:\\AI action\\Lab\\Day04-2A202602034-Dinh-Hoang-Quan\\starter_v0\\arxiv_papers\\2502.18015.pdf",
+                "txt_path": "C:\\AI action\\Lab\\Day04-2A202602034-Dinh-Hoang-Quan\\starter_v0\\arxiv_papers\\2502.18015.txt",
+                "page_count": 40,
+                "pages_read": 5,
+                "chars_returned": 8000,
+                "items": [
+                  {
+                    "title": "arXiv paper 2502.18015",
+                    "url": "https://arxiv.org/abs/2502.18015",
+                    "source": "arxiv.org",
+                    "summary": "SPIN: distilling Skill-RRT for long-horizon\nprehensile and non-prehensile manipulation\nHaewon Jung∗, Donguk Lee∗, Haecheol Park, JunHyeop Kim, Beomjoon Kim\nKorea Advanced Institute of Science and Technology (KAIST)\n{zora07, du.lee, hcp5004, amos0204, beomjoon.kim}@kaist.ac.kr\nAbstract: Current robots struggle with long-horizon manipulation tasks requiring\nsequences of prehensile and non-prehensile skills, contact-rich interactions, and\nlong-term reasoning. We present SPIN (Skill Planning to INference), a frame-\nwork that distills a computationally intensive planning algorithm into a policy via\nimitation learning. We proposeSkill-RRT, an extension of RRT that incorporates\nskill applicability checks and intermediate object pose sampling for solving such\nlong-horizon problems. To chain independently trained skills, we introduce con-\nnectors, goal-conditioned policies trained to minimize object disturbance during\ntransitions. High-quality demonstrations are generated with Skill-RRT and dis-\ntilled through noise-based replay in order to reduce online computation time. The\nresulting policy, trained entirely in simulation, transfers zero-shot to the real world\nand achieves over 80% success across three challenging long-horizon manipula-\ntion tasks and outperforms state-of-the-art hierarchical RL and planning meth-\nods.\nKeywords: Robot Skill Chaining, Imitation Learning, Planning\n1 Introduction\nHumans have a remarkable capability to use sequences of prehensile (P) and non-prehensile (NP)\nmanipulation in everyday life. For example, to take a book from a crowded shelf and place it in a\ntight space where our entire hand would not fit, we topple the book to enable grasping, pick-and-\nplace it to the edge of the target space, and then push it into place using just our fingers. Our ultimate\ngoal is to develop a policy that efficiently solves such prehensile–non-prehensile (PNP) tasks that\nrequire moving an object from a random initial state to a random target pose using a sequence of P\nand NP manipulation skills, as illustrated in Figure 1. Such problems are extremely complex: they\ndemand reasoning not just about the feasibility of each skill but also how to chain them, such as\ntoppling a book to enable a grasp.\nOne way to address this problem is learning-based approaches, such as reinforcement learning (RL)\nand imitation learning (IL), which have shown promise in recent years [1, 2, 3, 4, 5, 6, 7, 8, 9].\nHowever, PNP problems require reasoning over a large number of actions (e.g., more than 500 joint\ntorques) and RL struggles with such long-horizon tasks [10]. These issues are especially pronounced\nin our tasks, where the object must temporally move away from the goal before ultimately reach-\ning it, such as sliding a card to the edge of a table to enable grasping (Figure 1 (b), top row). In\nthese problems, reward design is especially difficult. IL, in contrast, sidesteps the exploration prob-\nlem through dense supervision from human demonstrations. However, it scales poorly to a wide\nvariety of initial states and goals, because collecting large-scale, long-horizon demonstrations is\nexpensive [6, 11, 12].\nRather than operating in a low-level action space such as joint torques, we propose to use temporally-\nabstracted skills to solve PNP problems. Specifically, we leverage the recent P and NP skill learning\nalgorithms to acquire the skills [3, 13, 14, 15, 16, 17, 18, 19], and chain them together to solve PNP\nproblems. We assume each skill has a parameterized goal-conditioned policy that takes as an input\n∗Equal contribution.\n9th Conference on Robot Learning (CoRL 2025), Seoul, Korea.\narXiv:2502.18015v3  [cs.RO]  7 May 2025\n\nFigure 1: Overview of our tasks. (a) Objects and problems. A problem is defined by initial and goal object\nposes marked with yellow and green. (b) Solutions for these problems. (first row) The robot must flip a thin\ncard, initially in an ungraspable pose, by first moving it to the end of the table to make a space for grasping,\nflipping it, and finally sliding it to the target pose. (Second row) The robot must put the book in the lower shelf\nwhere the robot gripper cannot fit by first toppling the book to enable grasping, picking and placing it to the\nend of the lower shelf, and then pushing it inside. (Third row) The robot must upright the cup in a sink, grab\nit, place it on the cupboard, and ensure the handle is inside the desired region by re-orienting it. The red arrow\nindicates the movement of the object, and the orange arrow represents the movement of the robot.\na desired object pose and state, and outputs a sequence of joint torques to achieve that pose. One\nway to solve PNP problems is to formulate the problem as a parameterized-action Markov decision\nprocess (PAMDPs) [20, 21, 22, 23, 24] where each parameterized action is a skill that takes in\nparameters, and use RL algorithms. While this shortens the planning horizon, the exploration is still\nchallenging because PNP problems usually involve a narrow space of subgoals the policy must go\nthrough in order to achieve the goal, commonly known as narrow passages [25]. Alternatively, we\ncan use planning algorithms [26], such as RRT [27], which is a time-tested method for finding a very\nlong sequence of robot configurations in a high dimensional space. However, while RRT can solve\nproblems involving narrow passages, it typically requires a long online computation time, making it\nimpractical in the real world.\nTherefore, we propose a two-stage framework for PNP problems, called SPIN (Skill Planning to\nINference), that consists of (1) a data-generation stage that generates a large number of solutions\nto PNP problems using a planner inside a simulator, and (2) a distillation stage for learning a policy\nusing IL to reduce online computation time and enable zero-shot real-world deployment. To do this,\nwe propose a novel planner, Skill-RRT, that extends RRT [27] into the space of skills and object\ngoals. One challenge in designing Skill-RRT is that typical P and NP learning algorithms are not\ninherently designed to learn skills in a way they would chain and there is a large gap between the\nresulting state of one skill and the applicable states of the next state [28]. For example, in the card\ndomain in Figure 1 (Top row), an NP sliding skill ends with the robot’s gripper closed and on top\nof the card, as shown in Figure 1 (b) first column. However, a P skill requires the robot to move\nto a pre-grasp configuration at the side of the card with the gripper opened as shown in Figure 1\n(b) second column. One na ¨ıve way to solve this state gap problem is to use a collision-free motion\nplanner to move the gripper. However, in these problems, even a small control error can disturb\nthe object and cause it to fall, and even a slight object movement can invalidate the planned path.\nInstead, we need a method that intelligently breaks and makes contacts.\nTo address this, we introduce connectors—goal-conditioned policies that, given the current state\nand goal end-effector pose, break contact and move to the goal pose with minimal disturbance\nto the object’s pose. For each skill, we associate a connector that brings the robot to one of the\nskill’s applicable states, similar to Mason’s concept of “funnels” [29]. We use RL to train the\nconnectors, and to generate relevant problems for training, we propose Lazy Skill-RRT, which\ntentatively assumes the existence of connectors and teleports the robot to the next skill’s applicable\nstate. We apply Lazy Skill-RRT to solve PNP problems while logging the states where the robot\nwas teleported – indicating the need for a connector. We then train the connector on these logged\nproblems, allowing us to focus training only on states relevant to the current problem. Equipped\nwith connectors, we use Skill-RRT to generate complete solutions to PNP problems.\n2\n\nTo distill Skill-RRT to a policy, we use Diffusion Policy [5] in order to cope with multi-modality in\nsolutions. One chal"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Here is a summary of the paper titled **\"SPIN: distilling Skill-RRT for long-horizon prehensile and non-prehensile manipulation\"**:\n\n- **Authors**: Haewon Jung, Donguk Lee, Haecheol Park, JunHyeop Kim, Beomjoon Kim\n- **Published**: May 7, 2025\n- **Link**: [Read the paper](https://arxiv.org/abs/2502.18015)\n\n### Summary:\nThe paper addresses the challenges faced by robots in performing long-horizon manipulation tasks that require a combination of prehensile (grasping) and non-prehensile (pushing, sliding) skills. The authors introduce a framework called SPIN (Skill Planning to INference), which distills a complex planning algorithm into a more efficient policy through imitation learning.\n\nKey contributions include:\n1. **Skill-RRT**: An extension of the RRT algorithm that incorporates skill applicability checks and intermediate object pose sampling to solve long-horizon manipulation problems.\n2. **Connectors**: Goal-conditioned policies that minimize object disturbance during transitions between skills, allowing for the chaining of independently trained skills.\n3. **High-Quality Demonstrations**: Generated using Skill-RRT and distilled through noise-based replay to reduce online computation time.\n\nThe resulting policy, trained entirely in simulation, demonstrates a successful transfer to real-world applications, achieving over 80% success across three challenging manipulation tasks. This approach outperforms existing hierarchical reinforcement learning and planning methods.\n\nThe paper emphasizes the importance of reasoning about the feasibility of skills and how to chain them effectively, addressing the complexities involved in manipulating objects in constrained environments.\n\nFeel free to ask if you need more details or further assistance!",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "paper_text",
+          "args": {
+            "arxiv_url": "2502.18015",
+            "max_pages": 5,
+            "max_chars": 8000
+          },
+          "result": {
+            "tool": "get_arxiv_paper_text",
+            "arxiv_id": "2502.18015",
+            "url": "https://arxiv.org/abs/2502.18015",
+            "pdf_url": "https://arxiv.org/pdf/2502.18015.pdf",
+            "pdf_path": "C:\\AI action\\Lab\\Day04-2A202602034-Dinh-Hoang-Quan\\starter_v0\\arxiv_papers\\2502.18015.pdf",
+            "txt_path": "C:\\AI action\\Lab\\Day04-2A202602034-Dinh-Hoang-Quan\\starter_v0\\arxiv_papers\\2502.18015.txt",
+            "page_count": 40,
+            "pages_read": 5,
+            "chars_returned": 8000,
+            "items": [
+              {
+                "title": "arXiv paper 2502.18015",
+                "url": "https://arxiv.org/abs/2502.18015",
+                "source": "arxiv.org",
+                "summary": "SPIN: distilling Skill-RRT for long-horizon\nprehensile and non-prehensile manipulation\nHaewon Jung∗, Donguk Lee∗, Haecheol Park, JunHyeop Kim, Beomjoon Kim\nKorea Advanced Institute of Science and Technology (KAIST)\n{zora07, du.lee, hcp5004, amos0204, beomjoon.kim}@kaist.ac.kr\nAbstract: Current robots struggle with long-horizon manipulation tasks requiring\nsequences of prehensile and non-prehensile skills, contact-rich interactions, and\nlong-term reasoning. We present SPIN (Skill Planning to INference), a frame-\nwork that distills a computationally intensive planning algorithm into a policy via\nimitation learning. We proposeSkill-RRT, an extension of RRT that incorporates\nskill applicability checks and intermediate object pose sampling for solving such\nlong-horizon problems. To chain independently trained skills, we introduce con-\nnectors, goal-conditioned policies trained to minimize object disturbance during\ntransitions. High-quality demonstrations are generated with Skill-RRT and dis-\ntilled through noise-based replay in order to reduce online computation time. The\nresulting policy, trained entirely in simulation, transfers zero-shot to the real world\nand achieves over 80% success across three challenging long-horizon manipula-\ntion tasks and outperforms state-of-the-art hierarchical RL and planning meth-\nods.\nKeywords: Robot Skill Chaining, Imitation Learning, Planning\n1 Introduction\nHumans have a remarkable capability to use sequences of prehensile (P) and non-prehensile (NP)\nmanipulation in everyday life. For example, to take a book from a crowded shelf and place it in a\ntight space where our entire hand would not fit, we topple the book to enable grasping, pick-and-\nplace it to the edge of the target space, and then push it into place using just our fingers. Our ultimate\ngoal is to develop a policy that efficiently solves such prehensile–non-prehensile (PNP) tasks that\nrequire moving an object from a random initial state to a random target pose using a sequence of P\nand NP manipulation skills, as illustrated in Figure 1. Such problems are extremely complex: they\ndemand reasoning not just about the feasibility of each skill but also how to chain them, such as\ntoppling a book to enable a grasp.\nOne way to address this problem is learning-based approaches, such as reinforcement learning (RL)\nand imitation learning (IL), which have shown promise in recent years [1, 2, 3, 4, 5, 6, 7, 8, 9].\nHowever, PNP problems require reasoning over a large number of actions (e.g., more than 500 joint\ntorques) and RL struggles with such long-horizon tasks [10]. These issues are especially pronounced\nin our tasks, where the object must temporally move away from the goal before ultimately reach-\ning it, such as sliding a card to the edge of a table to enable grasping (Figure 1 (b), top row). In\nthese problems, reward design is especially difficult. IL, in contrast, sidesteps the exploration prob-\nlem through dense supervision from human demonstrations. However, it scales poorly to a wide\nvariety of initial states and goals, because collecting large-scale, long-horizon demonstrations is\nexpensive [6, 11, 12].\nRather than operating in a low-level action space such as joint torques, we propose to use temporally-\nabstracted skills to solve PNP problems. Specifically, we leverage the recent P and NP skill learning\nalgorithms to acquire the skills [3, 13, 14, 15, 16, 17, 18, 19], and chain them together to solve PNP\nproblems. We assume each skill has a parameterized goal-conditioned policy that takes as an input\n∗Equal contribution.\n9th Conference on Robot Learning (CoRL 2025), Seoul, Korea.\narXiv:2502.18015v3  [cs.RO]  7 May 2025\n\nFigure 1: Overview of our tasks. (a) Objects and problems. A problem is defined by initial and goal object\nposes marked with yellow and green. (b) Solutions for these problems. (first row) The robot must flip a thin\ncard, initially in an ungraspable pose, by first moving it to the end of the table to make a space for grasping,\nflipping it, and finally sliding it to the target pose. (Second row) The robot must put the book in the lower shelf\nwhere the robot gripper cannot fit by first toppling the book to enable grasping, picking and placing it to the\nend of the lower shelf, and then pushing it inside. (Third row) The robot must upright the cup in a sink, grab\nit, place it on the cupboard, and ensure the handle is inside the desired region by re-orienting it. The red arrow\nindicates the movement of the object, and the orange arrow represents the movement of the robot.\na desired object pose and state, and outputs a sequence of joint torques to achieve that pose. One\nway to solve PNP problems is to formulate the problem as a parameterized-action Markov decision\nprocess (PAMDPs) [20, 21, 22, 23, 24] where each parameterized action is a skill that takes in\nparameters, and use RL algorithms. While this shortens the planning horizon, the exploration is still\nchallenging because PNP problems usually involve a narrow space of subgoals the policy must go\nthrough in order to achieve the goal, commonly known as narrow passages [25]. Alternatively, we\ncan use planning algorithms [26], such as RRT [27], which is a time-tested method for finding a very\nlong sequence of robot configurations in a high dimensional space. However, while RRT can solve\nproblems involving narrow passages, it typically requires a long online computation time, making it\nimpractical in the real world.\nTherefore, we propose a two-stage framework for PNP problems, called SPIN (Skill Planning to\nINference), that consists of (1) a data-generation stage that generates a large number of solutions\nto PNP problems using a planner inside a simulator, and (2) a distillation stage for learning a policy\nusing IL to reduce online computation time and enable zero-shot real-world deployment. To do this,\nwe propose a novel planner, Skill-RRT, that extends RRT [27] into the space of skills and object\ngoals. One challenge in designing Skill-RRT is that typical P and NP learning algorithms are not\ninherently designed to learn skills in a way they would chain and there is a large gap between the\nresulting state of one skill and the applicable states of the next state [28]. For example, in the card\ndomain in Figure 1 (Top row), an NP sliding skill ends with the robot’s gripper closed and on top\nof the card, as shown in Figure 1 (b) first column. However, a P skill requires the robot to move\nto a pre-grasp configuration at the side of the card with the gripper opened as shown in Figure 1\n(b) second column. One na ¨ıve way to solve this state gap problem is to use a collision-free motion\nplanner to move the gripper. However, in these problems, even a small control error can disturb\nthe object and cause it to fall, and even a slight object movement can invalidate the planned path.\nInstead, we need a method that intelligently breaks and makes contacts.\nTo address this, we introduce connectors—goal-conditioned policies that, given the current state\nand goal end-effector pose, break contact and move to the goal pose with minimal disturbance\nto the object’s pose. For each skill, we associate a connector that brings the robot to one of the\nskill’s applicable states, similar to Mason’s concept of “funnels” [29]. We use RL to train the\nconnectors, and to generate relevant problems for training, we propose Lazy Skill-RRT, which\ntentatively assumes the existence of connectors and teleports the robot to the next skill’s applicable\nstate. We apply Lazy Skill-RRT to solve PNP problems while logging the states where the robot\nwas teleported – indicating the need for a connector. We then train the connector on these logged\nproblems, allowing us to focus training only on states relevant to the current problem. Equipped\nwith connectors, we use Skill-RRT to generate complete solutions to PNP problems.\n2\n\nTo distill Skill-RRT to a policy, we use Diffusion Policy [5] in order to cope with multi-modality in\nsolutions. One chal"
+              }
+            ]
+          }
+        }
+      ],
+      "ended_at": "2026-07-29T16:15:43"
+    }
+  ]
+}

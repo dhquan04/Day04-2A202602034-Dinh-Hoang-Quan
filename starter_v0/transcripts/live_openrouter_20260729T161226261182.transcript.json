@@ -1,0 +1,402 @@
+{
+  "transcript_id": "live_openrouter_20260729T161226261182",
+  "version": "live",
+  "artifact_version": "live+peb1c8179815b+taeaebe7e58ad",
+  "prompt_hash": "eb1c8179815bd79d34de7d326420bb99b3072e6e8ae96464c02d4411f905fc68",
+  "tools_hash": "aeaebe7e58adb5c73842fb07f6ee338d7a5c8f49ad03a3f148d36745cf86f478",
+  "provider": "openrouter",
+  "model": null,
+  "system_prompt": "C:\\AI action\\Lab\\Day04-2A202602034-Dinh-Hoang-Quan\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "C:\\AI action\\Lab\\Day04-2A202602034-Dinh-Hoang-Quan\\starter_v0\\artifacts\\tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-07-29T16:12:26",
+  "updated_at": "2026-07-29T16:13:24",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-07-29T16:12:29",
+      "user": "So sánh RRT và RRT*",
+      "status": "answered",
+      "assistant_text": "### Comparison of RRT and RRT*\n\n**RRT (Rapidly-exploring Random Tree)**:\n- RRT is a sampling-based algorithm designed for path planning in high-dimensional spaces. It is particularly effective for quickly finding feasible paths in complex environments.\n- However, RRT does not guarantee optimality; the paths it generates are often suboptimal.\n\n**RRT* (Rapidly-exploring Random Tree Star)**:\n- RRT* is an extension of RRT that provides probabilistic asymptotic optimality. This means that as the number of samples increases, the path found by RRT* converges to the optimal path.\n- RRT* is generally more computationally intensive than RRT due to its optimization process, which can lead to longer planning times.\n\n### Key Differences:\n1. **Optimality**: RRT is not guaranteed to find the optimal path, while RRT* is designed to converge to the optimal solution.\n2. **Computational Cost**: RRT is faster and simpler, making it suitable for real-time applications, whereas RRT* may require more computational resources and time.\n3. **Convergence**: RRT* improves upon RRT by refining paths as more samples are added, leading to better solutions over time.\n\n### Relevant Research:\n1. **Optimised Informed RRTs for Mobile Robot Path Planning**: This paper discusses how informed sampling and path optimization can enhance both RRT and RRT*, showing that optimized RRTs can outperform RRT* in certain scenarios. [Read more here](http://arxiv.org/abs/2108.08051v4).\n   \n2. **Fillet-based RRT***: This research introduces a variant of RRT* that considers curvature constraints, demonstrating improved performance over traditional RRT* implementations. [Read more here](http://arxiv.org/abs/2302.11648v1).\n\n3. **BTO-RRT**: This paper presents a rapid, optimal path-planning algorithm that compares RRT and RRT* in various environments, showing the advantages of the proposed method over both. [Read more here](http://arxiv.org/abs/2211.06801v1).\n\nThese studies highlight the ongoing developments and comparisons between RRT and RRT*, showcasing their respective strengths and weaknesses in practical applications.",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "lookup",
+              "args": {
+                "query": "RRT vs RRT*",
+                "topic": "general",
+                "max_results": 5
+              }
+            },
+            {
+              "name": "papers",
+              "args": {
+                "query": "RRT RRT* comparison",
+                "max_results": 5
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "lookup",
+              "args": {
+                "query": "RRT vs RRT*",
+                "topic": "general",
+                "max_results": 5
+              },
+              "result": {
+                "tool": "web_search",
+                "error": "RuntimeError",
+                "message": "Missing TAVILY_API_KEY env var"
+              }
+            },
+            {
+              "tool": "papers",
+              "args": {
+                "query": "RRT RRT* comparison",
+                "max_results": 5
+              },
+              "result": {
+                "tool": "arxiv_search",
+                "query": "RRT RRT* comparison",
+                "api_query": "all:RRT AND all:RRT AND all:comparison",
+                "total_results": 29,
+                "items": [
+                  {
+                    "arxiv_id": "2108.08051v4",
+                    "title": "Optimised Informed RRTs for Mobile Robot Path Planning",
+                    "summary": "Path planners based on basic rapidly-exploring random trees (RRTs) are quick and efficient, and thus favourable for real-time robot path planning, but are almost-surely suboptimal. In contrast, the optimal RRT (RRT*) converges to the optimal solution, but may be expensive in practice. Recent work has focused on accelerating the RRT*'s convergence rate. The most successful strategies are informed sampling, path optimisation, and a combination thereof. However, informed sampling and its combination with path optimisation have not been applied to the basic RRT. Moreover, while a number of path optimisers can be used to accelerate the convergence rate, a comparison of their effectiveness is lacking. This paper investigates the use of informed sampling and path optimisation to accelerate planners based on both the basic RRT and the RRT*, resulting in a family of algorithms known as optimised informed RRTs. We apply different path optimisers and compare their effectiveness. The goal is to ascertain if applying informed sampling and path optimisation can help the quick, though almost-surely suboptimal, path planners based on the basic RRT attain comparable or better performance than RRT*-based planners. Analyses show that RRT-based optimised informed RRTs do attain better performance than their RRT*-based counterparts, both when planning time is limited and when there is more planning time.",
+                    "authors": [
+                      "Bongani B. Maseko",
+                      "Corné E. van Daalen",
+                      "Johann Treurnicht"
+                    ],
+                    "published": "2021-08-18T08:58:47Z",
+                    "updated": "2023-10-29T20:22:13Z",
+                    "url": "http://arxiv.org/abs/2108.08051v4",
+                    "pdf_url": "https://arxiv.org/pdf/2108.08051v4",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.RO",
+                    "categories": [
+                      "cs.RO",
+                      "eess.SY"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "2302.11648v1",
+                    "title": "Fillet-based RRT*: A Rapid Convergence Implementation of RRT* for Curvature Constrained Vehicles",
+                    "summary": "Rapidly exploring random trees (RRTs) have proven effective in quickly finding feasible solutions to complex motion planning problems. RRT* is an extension of the RRT algorithm that provides probabilistic asymptotic optimality guarantees when using straight-line motion primitives. This work provides extensions to RRT and RRT* that employ fillets as motion primitives, allowing path curvature constraints to be considered when planning. Two fillets are developed, an arc-based fillet that uses circular arcs to generate paths that respect maximum curvature constraints and a spline-based fillet that uses Bezier curves to additionally respect curvature continuity requirements. Planning with these fillets is shown to far exceed the performance of RRT* using Dubin's path motion primitives, approaching the performance of planning with straight-line path primitives. Path sampling heuristics are also introduced to accelerate convergence for nonholonomic motion planning. Comparisons to established RRT* approaches are made using the Open Motion Planning Library (OMPL).",
+                    "authors": [
+                      "James Swedeen",
+                      "Greg Droge",
+                      "Randall Christensen"
+                    ],
+                    "published": "2023-02-22T20:56:11Z",
+                    "updated": "2023-02-22T20:56:11Z",
+                    "url": "http://arxiv.org/abs/2302.11648v1",
+                    "pdf_url": "https://arxiv.org/pdf/2302.11648v1",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.RO",
+                    "categories": [
+                      "cs.RO",
+                      "eess.SY"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "2211.06801v1",
+                    "title": "BTO-RRT: A rapid, optimal, smooth and point cloud-based path planning algorithm",
+                    "summary": "This paper explores a rapid, optimal smooth path-planning algorithm for robots (e.g., autonomous vehicles) in point cloud environments. Derivative maps such as dense point clouds, mesh maps, Octomaps, etc. are frequently used for path planning purposes. A bi-directional target-oriented point planning algorithm, directly using point clouds to compute the optimized and dynamically feasible trajectories, is presented in this paper. This approach searches for obstacle-free, low computational cost, smooth, and dynamically feasible paths by analyzing a point cloud of the target environment, using a modified bi-directional and RRT-connect-based path planning algorithm, with a k-d tree-based obstacle avoidance strategy and three-step optimization. This presented approach bypasses the common 3D map discretization, directly leveraging point cloud data and it can be separated into two parts: modified RRT-based algorithm core and the three-step optimization. Simulations on 8 2D maps with different configurations and characteristics are presented to show the efficiency and 2D performance of the proposed algorithm. Benchmark comparison and evaluation with other RRT-based algorithms like RRT, B-RRT, and RRT star are also shown in the paper. Finally, the proposed algorithm successfully achieved different levels of mission goals on three 3D point cloud maps with different densities. The whole simulation proves that not only can our algorithm achieves a better performance on 2D maps compared with other algorithms, but also it can handle different tasks(ground vehicles and UAV applications) on different 3D point cloud maps, which shows the high performance and robustness of the proposed algorithm. The algorithm is open-sourced at \\url{https://github.com/zhz03/BTO-RRT}",
+                    "authors": [
+                      "Zhaoliang Zheng",
+                      "Thomas R. Bewley",
+                      "Falko Kuester",
+                      "Jiaqi Ma"
+                    ],
+                    "published": "2022-11-13T03:46:00Z",
+                    "updated": "2022-11-13T03:46:00Z",
+                    "url": "http://arxiv.org/abs/2211.06801v1",
+                    "pdf_url": "https://arxiv.org/pdf/2211.06801v1",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.RO",
+                    "categories": [
+                      "cs.RO",
+                      "eess.SY"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "2512.17680v1",
+                    "title": "A Dual Quaternion based RRT* Path Planning Approach for Satellite Rendezvous and Docking",
+                    "summary": "This paper proposes a sampling-based motion planner that employs a dual quaternion representation to generate smooth, collision-free six-degree-of-freedom pose trajectories for satellite rendezvous and docking under keep-out zone constraints. The proposed planner integrates the dual quaternion algebra directly into an RRT* framework, thereby enabling natural screw motion interpolation in SE(3). The dual quaternion-based RRT* has been implemented in Python and demonstrated on a representative multi-obstacle scenario. A comparison with a standard RRT* using separate translation and quaternion steering highlights the enhanced pose continuity and obstacle avoidance of the proposed method. The present approach is purely kinematic in nature and does not take into account relative orbital dynamics. Consequently, the resulting path provides a preliminary estimate for a subsequent optimisation-based trajectory planner, which will refine the motion with dynamic constraints for the purpose of practical satellite rendezvous and docking missions.",
+                    "authors": [
+                      "Ana Stankovic",
+                      "Mohamed Khalil Ben-Larbi",
+                      "Wolfgang H. Müller"
+                    ],
+                    "published": "2025-12-19T15:17:46Z",
+                    "updated": "2025-12-19T15:17:46Z",
+                    "url": "http://arxiv.org/abs/2512.17680v1",
+                    "pdf_url": "https://arxiv.org/pdf/2512.17680v1",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.RO",
+                    "categories": [
+                      "cs.RO"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "1704.00264v1",
+                    "title": "Potential Functions based Sampling Heuristic For Optimal Path Planning",
+                    "summary": "Rapidly-exploring Random Tree Star(RRT*) is a recently proposed extension of Rapidly-exploring Random Tree (RRT) algorithm that provides a collision-free, asymptotically optimal path regardless of obstacle's geometry in a given environment. However, one of the limitations in the RRT* algorithm is slow convergence to optimal path solution. As a result, it consumes high memory as well as time due to a large number of iterations utilised in achieving optimal path solution. To overcome these limitations, we propose the Potential Function Based-RRT* (P-RRT*) that incorporates the Artificial Potential Field Algorithm in RRT*. The proposed algorithm allows a considerable decrease in the number of iterations and thus leads to more efficient memory utilization and an accelerated convergence rate. In order to illustrate the usefulness of the proposed algorithm in terms of space execution and convergence rate, this paper presents rigorous simulation based comparisons between the proposed techniques and RRT* under different environmental conditions. Moreover, both algorithms are also tested and compared under non-holonomic differential constraints.",
+                    "authors": [
+                      "Ahmed Hussain Qureshi",
+                      "Yasar Ayaz"
+                    ],
+                    "published": "2017-04-02T08:21:30Z",
+                    "updated": "2017-04-02T08:21:30Z",
+                    "url": "http://arxiv.org/abs/1704.00264v1",
+                    "pdf_url": "https://arxiv.org/pdf/1704.00264v1",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.RO",
+                    "categories": [
+                      "cs.RO",
+                      "cs.AI"
+                    ]
+                  }
+                ],
+                "rate_limit_note": "arXiv may return 429 if called too frequently; this tool waits at least 3 seconds between requests in-process."
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "### Comparison of RRT and RRT*\n\n**RRT (Rapidly-exploring Random Tree)**:\n- RRT is a sampling-based algorithm designed for path planning in high-dimensional spaces. It is particularly effective for quickly finding feasible paths in complex environments.\n- However, RRT does not guarantee optimality; the paths it generates are often suboptimal.\n\n**RRT* (Rapidly-exploring Random Tree Star)**:\n- RRT* is an extension of RRT that provides probabilistic asymptotic optimality. This means that as the number of samples increases, the path found by RRT* converges to the optimal path.\n- RRT* is generally more computationally intensive than RRT due to its optimization process, which can lead to longer planning times.\n\n### Key Differences:\n1. **Optimality**: RRT is not guaranteed to find the optimal path, while RRT* is designed to converge to the optimal solution.\n2. **Computational Cost**: RRT is faster and simpler, making it suitable for real-time applications, whereas RRT* may require more computational resources and time.\n3. **Convergence**: RRT* improves upon RRT by refining paths as more samples are added, leading to better solutions over time.\n\n### Relevant Research:\n1. **Optimised Informed RRTs for Mobile Robot Path Planning**: This paper discusses how informed sampling and path optimization can enhance both RRT and RRT*, showing that optimized RRTs can outperform RRT* in certain scenarios. [Read more here](http://arxiv.org/abs/2108.08051v4).\n   \n2. **Fillet-based RRT***: This research introduces a variant of RRT* that considers curvature constraints, demonstrating improved performance over traditional RRT* implementations. [Read more here](http://arxiv.org/abs/2302.11648v1).\n\n3. **BTO-RRT**: This paper presents a rapid, optimal path-planning algorithm that compares RRT and RRT* in various environments, showing the advantages of the proposed method over both. [Read more here](http://arxiv.org/abs/2211.06801v1).\n\nThese studies highlight the ongoing developments and comparisons between RRT and RRT*, showcasing their respective strengths and weaknesses in practical applications.",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "RRT vs RRT*",
+            "topic": "general",
+            "max_results": 5
+          },
+          "result": {
+            "tool": "web_search",
+            "error": "RuntimeError",
+            "message": "Missing TAVILY_API_KEY env var"
+          }
+        },
+        {
+          "tool": "papers",
+          "args": {
+            "query": "RRT RRT* comparison",
+            "max_results": 5
+          },
+          "result": {
+            "tool": "arxiv_search",
+            "query": "RRT RRT* comparison",
+            "api_query": "all:RRT AND all:RRT AND all:comparison",
+            "total_results": 29,
+            "items": [
+              {
+                "arxiv_id": "2108.08051v4",
+                "title": "Optimised Informed RRTs for Mobile Robot Path Planning",
+                "summary": "Path planners based on basic rapidly-exploring random trees (RRTs) are quick and efficient, and thus favourable for real-time robot path planning, but are almost-surely suboptimal. In contrast, the optimal RRT (RRT*) converges to the optimal solution, but may be expensive in practice. Recent work has focused on accelerating the RRT*'s convergence rate. The most successful strategies are informed sampling, path optimisation, and a combination thereof. However, informed sampling and its combination with path optimisation have not been applied to the basic RRT. Moreover, while a number of path optimisers can be used to accelerate the convergence rate, a comparison of their effectiveness is lacking. This paper investigates the use of informed sampling and path optimisation to accelerate planners based on both the basic RRT and the RRT*, resulting in a family of algorithms known as optimised informed RRTs. We apply different path optimisers and compare their effectiveness. The goal is to ascertain if applying informed sampling and path optimisation can help the quick, though almost-surely suboptimal, path planners based on the basic RRT attain comparable or better performance than RRT*-based planners. Analyses show that RRT-based optimised informed RRTs do attain better performance than their RRT*-based counterparts, both when planning time is limited and when there is more planning time.",
+                "authors": [
+                  "Bongani B. Maseko",
+                  "Corné E. van Daalen",
+                  "Johann Treurnicht"
+                ],
+                "published": "2021-08-18T08:58:47Z",
+                "updated": "2023-10-29T20:22:13Z",
+                "url": "http://arxiv.org/abs/2108.08051v4",
+                "pdf_url": "https://arxiv.org/pdf/2108.08051v4",
+                "source": "arxiv.org",
+                "primary_category": "cs.RO",
+                "categories": [
+                  "cs.RO",
+                  "eess.SY"
+                ]
+              },
+              {
+                "arxiv_id": "2302.11648v1",
+                "title": "Fillet-based RRT*: A Rapid Convergence Implementation of RRT* for Curvature Constrained Vehicles",
+                "summary": "Rapidly exploring random trees (RRTs) have proven effective in quickly finding feasible solutions to complex motion planning problems. RRT* is an extension of the RRT algorithm that provides probabilistic asymptotic optimality guarantees when using straight-line motion primitives. This work provides extensions to RRT and RRT* that employ fillets as motion primitives, allowing path curvature constraints to be considered when planning. Two fillets are developed, an arc-based fillet that uses circular arcs to generate paths that respect maximum curvature constraints and a spline-based fillet that uses Bezier curves to additionally respect curvature continuity requirements. Planning with these fillets is shown to far exceed the performance of RRT* using Dubin's path motion primitives, approaching the performance of planning with straight-line path primitives. Path sampling heuristics are also introduced to accelerate convergence for nonholonomic motion planning. Comparisons to established RRT* approaches are made using the Open Motion Planning Library (OMPL).",
+                "authors": [
+                  "James Swedeen",
+                  "Greg Droge",
+                  "Randall Christensen"
+                ],
+                "published": "2023-02-22T20:56:11Z",
+                "updated": "2023-02-22T20:56:11Z",
+                "url": "http://arxiv.org/abs/2302.11648v1",
+                "pdf_url": "https://arxiv.org/pdf/2302.11648v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.RO",
+                "categories": [
+                  "cs.RO",
+                  "eess.SY"
+                ]
+              },
+              {
+                "arxiv_id": "2211.06801v1",
+                "title": "BTO-RRT: A rapid, optimal, smooth and point cloud-based path planning algorithm",
+                "summary": "This paper explores a rapid, optimal smooth path-planning algorithm for robots (e.g., autonomous vehicles) in point cloud environments. Derivative maps such as dense point clouds, mesh maps, Octomaps, etc. are frequently used for path planning purposes. A bi-directional target-oriented point planning algorithm, directly using point clouds to compute the optimized and dynamically feasible trajectories, is presented in this paper. This approach searches for obstacle-free, low computational cost, smooth, and dynamically feasible paths by analyzing a point cloud of the target environment, using a modified bi-directional and RRT-connect-based path planning algorithm, with a k-d tree-based obstacle avoidance strategy and three-step optimization. This presented approach bypasses the common 3D map discretization, directly leveraging point cloud data and it can be separated into two parts: modified RRT-based algorithm core and the three-step optimization. Simulations on 8 2D maps with different configurations and characteristics are presented to show the efficiency and 2D performance of the proposed algorithm. Benchmark comparison and evaluation with other RRT-based algorithms like RRT, B-RRT, and RRT star are also shown in the paper. Finally, the proposed algorithm successfully achieved different levels of mission goals on three 3D point cloud maps with different densities. The whole simulation proves that not only can our algorithm achieves a better performance on 2D maps compared with other algorithms, but also it can handle different tasks(ground vehicles and UAV applications) on different 3D point cloud maps, which shows the high performance and robustness of the proposed algorithm. The algorithm is open-sourced at \\url{https://github.com/zhz03/BTO-RRT}",
+                "authors": [
+                  "Zhaoliang Zheng",
+                  "Thomas R. Bewley",
+                  "Falko Kuester",
+                  "Jiaqi Ma"
+                ],
+                "published": "2022-11-13T03:46:00Z",
+                "updated": "2022-11-13T03:46:00Z",
+                "url": "http://arxiv.org/abs/2211.06801v1",
+                "pdf_url": "https://arxiv.org/pdf/2211.06801v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.RO",
+                "categories": [
+                  "cs.RO",
+                  "eess.SY"
+                ]
+              },
+              {
+                "arxiv_id": "2512.17680v1",
+                "title": "A Dual Quaternion based RRT* Path Planning Approach for Satellite Rendezvous and Docking",
+                "summary": "This paper proposes a sampling-based motion planner that employs a dual quaternion representation to generate smooth, collision-free six-degree-of-freedom pose trajectories for satellite rendezvous and docking under keep-out zone constraints. The proposed planner integrates the dual quaternion algebra directly into an RRT* framework, thereby enabling natural screw motion interpolation in SE(3). The dual quaternion-based RRT* has been implemented in Python and demonstrated on a representative multi-obstacle scenario. A comparison with a standard RRT* using separate translation and quaternion steering highlights the enhanced pose continuity and obstacle avoidance of the proposed method. The present approach is purely kinematic in nature and does not take into account relative orbital dynamics. Consequently, the resulting path provides a preliminary estimate for a subsequent optimisation-based trajectory planner, which will refine the motion with dynamic constraints for the purpose of practical satellite rendezvous and docking missions.",
+                "authors": [
+                  "Ana Stankovic",
+                  "Mohamed Khalil Ben-Larbi",
+                  "Wolfgang H. Müller"
+                ],
+                "published": "2025-12-19T15:17:46Z",
+                "updated": "2025-12-19T15:17:46Z",
+                "url": "http://arxiv.org/abs/2512.17680v1",
+                "pdf_url": "https://arxiv.org/pdf/2512.17680v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.RO",
+                "categories": [
+                  "cs.RO"
+                ]
+              },
+              {
+                "arxiv_id": "1704.00264v1",
+                "title": "Potential Functions based Sampling Heuristic For Optimal Path Planning",
+                "summary": "Rapidly-exploring Random Tree Star(RRT*) is a recently proposed extension of Rapidly-exploring Random Tree (RRT) algorithm that provides a collision-free, asymptotically optimal path regardless of obstacle's geometry in a given environment. However, one of the limitations in the RRT* algorithm is slow convergence to optimal path solution. As a result, it consumes high memory as well as time due to a large number of iterations utilised in achieving optimal path solution. To overcome these limitations, we propose the Potential Function Based-RRT* (P-RRT*) that incorporates the Artificial Potential Field Algorithm in RRT*. The proposed algorithm allows a considerable decrease in the number of iterations and thus leads to more efficient memory utilization and an accelerated convergence rate. In order to illustrate the usefulness of the proposed algorithm in terms of space execution and convergence rate, this paper presents rigorous simulation based comparisons between the proposed techniques and RRT* under different environmental conditions. Moreover, both algorithms are also tested and compared under non-holonomic differential constraints.",
+                "authors": [
+                  "Ahmed Hussain Qureshi",
+                  "Yasar Ayaz"
+                ],
+                "published": "2017-04-02T08:21:30Z",
+                "updated": "2017-04-02T08:21:30Z",
+                "url": "http://arxiv.org/abs/1704.00264v1",
+                "pdf_url": "https://arxiv.org/pdf/1704.00264v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.RO",
+                "categories": [
+                  "cs.RO",
+                  "cs.AI"
+                ]
+              }
+            ],
+            "rate_limit_note": "arXiv may return 429 if called too frequently; this tool waits at least 3 seconds between requests in-process."
+          }
+        }
+      ],
+      "ended_at": "2026-07-29T16:12:45"
+    },
+    {
+      "turn_index": 2,
+      "started_at": "2026-07-29T16:13:03",
+      "user": "Đọc paper đầu tiên giúp tôi",
+      "status": "answered",
+      "assistant_text": "I have retrieved the content from the paper titled \"Optimised Informed RRTs for Mobile Robot Path Planning.\" Here’s a summary of the key points:\n\n### Summary:\n- **Authors**: Bongani B. Maseko, Corné E. van Daalen, Johann Treurnicht\n- **Published in**: IFAC-PapersOnLine, Volume 54, Issue 21, Pages 157–162, 2021\n- **DOI**: [10.1016/j.ifacol.2021.12.027](https://doi.org/10.1016/j.ifacol.2021.12.027)\n\n#### Abstract:\nThe paper discusses the limitations of basic RRTs (Rapidly-exploring Random Trees) in terms of optimality and introduces the concept of \"optimised informed RRTs.\" While RRTs are efficient for real-time path planning, they are often suboptimal. In contrast, RRT* converges to an optimal solution but can be computationally expensive. The authors explore the use of informed sampling and path optimization to enhance both RRT and RRT* planners, aiming to achieve better performance with RRT-based methods.\n\n#### Key Findings:\n- The study investigates various path optimizers and their effectiveness in accelerating the convergence of both RRT and RRT*.\n- Results indicate that RRT-based optimised informed RRTs can outperform RRT*-based planners in terms of planning time and path quality.\n- The paper emphasizes the importance of quick path planning in autonomous systems, highlighting the need for both safety and efficiency.\n\n#### Keywords:\n- Autonomous vehicles\n- Robot navigation\n- Path planning\n- Optimisation\n- Constraints\n\nFor further details, you can access the full paper [here](https://arxiv.org/abs/2108.08051v4) or download the PDF [here](https://arxiv.org/pdf/2108.08051v4.pdf).",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "paper_text",
+              "args": {
+                "arxiv_url": "http://arxiv.org/abs/2108.08051v4",
+                "max_pages": 5,
+                "max_chars": 8000
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "paper_text",
+              "args": {
+                "arxiv_url": "http://arxiv.org/abs/2108.08051v4",
+                "max_pages": 5,
+                "max_chars": 8000
+              },
+              "result": {
+                "tool": "get_arxiv_paper_text",
+                "arxiv_id": "2108.08051v4",
+                "url": "https://arxiv.org/abs/2108.08051v4",
+                "pdf_url": "https://arxiv.org/pdf/2108.08051v4.pdf",
+                "pdf_path": "C:\\AI action\\Lab\\Day04-2A202602034-Dinh-Hoang-Quan\\starter_v0\\arxiv_papers\\2108.08051v4.pdf",
+                "txt_path": "C:\\AI action\\Lab\\Day04-2A202602034-Dinh-Hoang-Quan\\starter_v0\\arxiv_papers\\2108.08051v4.txt",
+                "page_count": 6,
+                "pages_read": 5,
+                "chars_returned": 8000,
+                "items": [
+                  {
+                    "title": "arXiv paper 2108.08051v4",
+                    "url": "https://arxiv.org/abs/2108.08051v4",
+                    "source": "arxiv.org",
+                    "summary": "† Published in IF AC-PapersOnLine, V olume 54, Issue 21, Pages 157–162, 2021, Elsevier.\nDOI: 10.1016/j.ifacol.2021.12.027\nCopyright © 2021 IF AC\nOptimised Informed RRTs for Mobile\nRobot Path Planning\nBongani B. Maseko, Corn´ e E. van Daalen, Johann T reurnicht\nElectronic Systems Laboratory, Department of Electrical & Electronic\nEngineering, Stellenbosch University, South Africa\nAbstract: Path planners based on basic rapidly-exploring random trees (RRTs) are quick\nand efficient, and thus favourable for real-time robot path planning, but are almost-surely\nsuboptimal. In contrast, the optimal RRT (RRT*) converges to the optimal solution, but may\nbe expensive in practice. Recent work has focused on accelerating the RRT*’s convergence rate.\nThe most successful strategies are informed sampling, path optimisation, and a combination\nthereof. However, informed sampling and its combination with path optimisation have not been\napplied to the basic RRT. Moreover, while a number of path optimisers can be used to accelerate\nthe convergence rate, a comparison of their effectiveness is lacking. This paper investigates the\nuse of informed sampling and path optimisation to accelerate planners based on both the basic\nRRT and the RRT*, resulting in a family of algorithms known as optimised informed RRTs .\nWe apply different path optimisers and compare their effectiveness. The goal is to ascertain if\napplying informed sampling and path optimisation can help the quick, though almost-surely\nsuboptimal, path planners based on the basic RRT attain comparable or better performance\nthan RRT*-based planners. Analyses show that RRT-based optimised informed RRTs do attain\nbetter performance than their RRT*-based counterparts, both when planning time is limited\nand when there is more planning time.\nKeywords: Autonomous vehicles, robot navigation, path planning, optimisation, constraints.\n1. INTRODUCTION\nKey requirements for an autonomous transportation sys-\ntem include safety, reliability and responsiveness. The path\nplanner, which is a critical component of such a sys-\ntem, therefore has to plan near-optimal paths that result\nin reaching destinations safely. Moreover, paths must be\nplanned quickly, otherwise unacceptable delays (in real-\ntime path planning) are incurred. The planned path then\nfunctions as the reference input to the vehicle controller,\nwhich has the task of accurately following the path.\nThe most widely used path-planning approaches are\nbased on the configuration space (Lozano-Perez, 1983);\nthey include reactive, combinatorial, grid-based, potential\nfield, decision-theoretic, and sampling-based path plan-\nning (Lumelsky and Stepanov, 1987; Chazelle, 1987; Yap,\n2002; Hwang and Ahuja, 1992; Du et al., 2010; Kavraki\net al., 1994; LaValle, 1998). We use sampling-based path\nplanners, which are the most established; they efficiently\ngenerate good quality paths and can seamlessly incorpo-\nrate vehicle motion constraints. We focus on single-query\napplications, where a robot plans to navigate an environ-\nment only once. The basic rapidly-exploring random tree\n(RRT) (LaValle, 1998) is a quick and efficient single-query\nsampling-based path planner that has, unfortunately, been\nproven to be almost-surely suboptimal. The optimal RRT\n(RRT*) (Karaman and Frazzoli, 2011), an asymptotically-\noptimal extension of the RRT, finds a solution that tends\nto the optimal solution as the number of iterations tends\nto infinity; so, it may take very long to find a near-optimal\npath. After the introduction of the RRT*, some work has\nfocused on accelerating its convergence rate, with the aim\nof finding a near-optimal path in finite time.\nAlthough some strategies, notably informed sampling\n(Gammell et al., 2014) and its combination with path\noptimisation (Kim and Song, 2015), have been shown to\nbe effective in accelerating the RRT*’s convergence, this\nhas not been compared to similar acceleration of the basic\nRRT. Basic RRT-based planners are usually much faster\nthan RRT*-based planners, which would allow more time\nto improve the solution. This then raises the question of\nwhether applying informed sampling and path optimisa-\ntion can help the quick, though almost-surely suboptimal,\npath planners based on the basic RRT attain comparable\nor better performance than their RRT*-based counter-\nparts. In literature, the effectiveness of different path op-\ntimisers in accelerating convergence has not been studied.\nTo this end, we apply a combination of informed sampling\nand path optimisation to both planners based on the basic\nRRT and the RRT*, and compare their convergence rates.\nWe use different path optimisers, including path pruning,\nrandom shortcut, the wrapping process and gradient-based\npath optimisation (Geraerts and Overmars, 2007; Kim and\nSong, 2015; Campana et al., 2016).\nIn this work, the algorithms are presented in their most ba-\nsic form, wherein planned paths are piecewise linear. Such\npaths are commonly used for robots with no significant\ndifferential constraints or those with an onboard controller\nthat is capable of tracking such paths without sustaining\narXiv:2108.08051v4  [cs.RO]  29 Oct 2023\n\ncollisions. Adaptation for robots with significant differen-\ntial constraints is part of future work.\nThe paper is organised as follows: The benchmark basic\nRRT and RRT* that use informed sampling are presented\nin Section 2, followed by the path optimisers and their\napplication to the benchmark planners in Section 3. Com-\nparative results are presented in Section 4, followed by\nconclusions in Section 5.\n2. BENCHMARK PATH PLANNERS\nWe start this section by reviewing the basic RRT and\nexplain how the RRT* extends it. Thereafter, focus shifts\nto their informed versions – the benchmark path planners.\n2.1 Basic RRT and RRT*\nThe basic RRT grows a planning tree, T , rooted at the\ninitial configuration, qI , that explores the configuration\nspace, C. Its pseudocode is given in Alg. 1. The tree is\ngrown by iteratively sampling a random configuration,\nqsamp, and attempting to extend the tree towards it\n(lines 7–9). Tree nodes are reachable configurations and\nits edges are feasible paths by which the configurations\nare reached. To grow the tree, an existing node, qnearest,\nthat is closest to qsamp is selected (line 2). The newConfig\nfunction (line 3) then generates a configuration, qnew, that\ngets as close as possible to qsamp through a feasible and\ncollision-free edge from qnearest. The edge is computed\nusing a local path-planning method (LPM) and tested for\ncollisions using a collision detector before qnew is added.\nThis is performed by the insertNode function (line 4).\nOnce a node within a specified distance from the goal\nconfiguration, qG, is added, a solution path is considered\nfound; alternatively the goal may be occasionally sampled,\nand an attempt to add it made. Since the basic RRT\nalways extends the tree from the nearest existing node,\nregardless of its cost (see Fig. 1(a)), it does not attempt\nto improve path cost.\nAlgorithm 1: RRT(qI , qG)\n1F unctionextendRRT(T , qsamp)\n2qnearest ← nearestNeighbour(T , qsamp);\n3if newConfig(qnearest, qsamp, qnew) then\n4T .insertNode(qnearest, qnew);\n5F unctionmain()\n6T .initialise(qI );\n7for i = 1 :maxIterations do\n8qsamp ← randomConfig();\n9extendRRT(T , qsamp);\n10return T ;\nThe RRT* is an extension of the RRT that refines the tree\nwith every added node, so as to improve paths to the new\nnode and its neighbours. Its pseudocode is given in Alg. 2.\nFirstly, instead of simply connecting a new node via the\nnearest existing node, it considers multiple nodes within a\nspecified radius and chooses the cheapest as the new node’s\nparent (lines 5–7). Secondly, it considers the new node as\na replacement parent for neighbouring nodes if reaching\nsuch a node via the new node results in a cheaper path\nthan via the current parent. This is known as rewiring\n(line 8). The RRT* is asymptotically optimal, which\nmeans that the solution tends to the optimal solution as\nthe number o"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "I have retrieved the content from the paper titled \"Optimised Informed RRTs for Mobile Robot Path Planning.\" Here’s a summary of the key points:\n\n### Summary:\n- **Authors**: Bongani B. Maseko, Corné E. van Daalen, Johann Treurnicht\n- **Published in**: IFAC-PapersOnLine, Volume 54, Issue 21, Pages 157–162, 2021\n- **DOI**: [10.1016/j.ifacol.2021.12.027](https://doi.org/10.1016/j.ifacol.2021.12.027)\n\n#### Abstract:\nThe paper discusses the limitations of basic RRTs (Rapidly-exploring Random Trees) in terms of optimality and introduces the concept of \"optimised informed RRTs.\" While RRTs are efficient for real-time path planning, they are often suboptimal. In contrast, RRT* converges to an optimal solution but can be computationally expensive. The authors explore the use of informed sampling and path optimization to enhance both RRT and RRT* planners, aiming to achieve better performance with RRT-based methods.\n\n#### Key Findings:\n- The study investigates various path optimizers and their effectiveness in accelerating the convergence of both RRT and RRT*.\n- Results indicate that RRT-based optimised informed RRTs can outperform RRT*-based planners in terms of planning time and path quality.\n- The paper emphasizes the importance of quick path planning in autonomous systems, highlighting the need for both safety and efficiency.\n\n#### Keywords:\n- Autonomous vehicles\n- Robot navigation\n- Path planning\n- Optimisation\n- Constraints\n\nFor further details, you can access the full paper [here](https://arxiv.org/abs/2108.08051v4) or download the PDF [here](https://arxiv.org/pdf/2108.08051v4.pdf).",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "paper_text",
+          "args": {
+            "arxiv_url": "http://arxiv.org/abs/2108.08051v4",
+            "max_pages": 5,
+            "max_chars": 8000
+          },
+          "result": {
+            "tool": "get_arxiv_paper_text",
+            "arxiv_id": "2108.08051v4",
+            "url": "https://arxiv.org/abs/2108.08051v4",
+            "pdf_url": "https://arxiv.org/pdf/2108.08051v4.pdf",
+            "pdf_path": "C:\\AI action\\Lab\\Day04-2A202602034-Dinh-Hoang-Quan\\starter_v0\\arxiv_papers\\2108.08051v4.pdf",
+            "txt_path": "C:\\AI action\\Lab\\Day04-2A202602034-Dinh-Hoang-Quan\\starter_v0\\arxiv_papers\\2108.08051v4.txt",
+            "page_count": 6,
+            "pages_read": 5,
+            "chars_returned": 8000,
+            "items": [
+              {
+                "title": "arXiv paper 2108.08051v4",
+                "url": "https://arxiv.org/abs/2108.08051v4",
+                "source": "arxiv.org",
+                "summary": "† Published in IF AC-PapersOnLine, V olume 54, Issue 21, Pages 157–162, 2021, Elsevier.\nDOI: 10.1016/j.ifacol.2021.12.027\nCopyright © 2021 IF AC\nOptimised Informed RRTs for Mobile\nRobot Path Planning\nBongani B. Maseko, Corn´ e E. van Daalen, Johann T reurnicht\nElectronic Systems Laboratory, Department of Electrical & Electronic\nEngineering, Stellenbosch University, South Africa\nAbstract: Path planners based on basic rapidly-exploring random trees (RRTs) are quick\nand efficient, and thus favourable for real-time robot path planning, but are almost-surely\nsuboptimal. In contrast, the optimal RRT (RRT*) converges to the optimal solution, but may\nbe expensive in practice. Recent work has focused on accelerating the RRT*’s convergence rate.\nThe most successful strategies are informed sampling, path optimisation, and a combination\nthereof. However, informed sampling and its combination with path optimisation have not been\napplied to the basic RRT. Moreover, while a number of path optimisers can be used to accelerate\nthe convergence rate, a comparison of their effectiveness is lacking. This paper investigates the\nuse of informed sampling and path optimisation to accelerate planners based on both the basic\nRRT and the RRT*, resulting in a family of algorithms known as optimised informed RRTs .\nWe apply different path optimisers and compare their effectiveness. The goal is to ascertain if\napplying informed sampling and path optimisation can help the quick, though almost-surely\nsuboptimal, path planners based on the basic RRT attain comparable or better performance\nthan RRT*-based planners. Analyses show that RRT-based optimised informed RRTs do attain\nbetter performance than their RRT*-based counterparts, both when planning time is limited\nand when there is more planning time.\nKeywords: Autonomous vehicles, robot navigation, path planning, optimisation, constraints.\n1. INTRODUCTION\nKey requirements for an autonomous transportation sys-\ntem include safety, reliability and responsiveness. The path\nplanner, which is a critical component of such a sys-\ntem, therefore has to plan near-optimal paths that result\nin reaching destinations safely. Moreover, paths must be\nplanned quickly, otherwise unacceptable delays (in real-\ntime path planning) are incurred. The planned path then\nfunctions as the reference input to the vehicle controller,\nwhich has the task of accurately following the path.\nThe most widely used path-planning approaches are\nbased on the configuration space (Lozano-Perez, 1983);\nthey include reactive, combinatorial, grid-based, potential\nfield, decision-theoretic, and sampling-based path plan-\nning (Lumelsky and Stepanov, 1987; Chazelle, 1987; Yap,\n2002; Hwang and Ahuja, 1992; Du et al., 2010; Kavraki\net al., 1994; LaValle, 1998). We use sampling-based path\nplanners, which are the most established; they efficiently\ngenerate good quality paths and can seamlessly incorpo-\nrate vehicle motion constraints. We focus on single-query\napplications, where a robot plans to navigate an environ-\nment only once. The basic rapidly-exploring random tree\n(RRT) (LaValle, 1998) is a quick and efficient single-query\nsampling-based path planner that has, unfortunately, been\nproven to be almost-surely suboptimal. The optimal RRT\n(RRT*) (Karaman and Frazzoli, 2011), an asymptotically-\noptimal extension of the RRT, finds a solution that tends\nto the optimal solution as the number of iterations tends\nto infinity; so, it may take very long to find a near-optimal\npath. After the introduction of the RRT*, some work has\nfocused on accelerating its convergence rate, with the aim\nof finding a near-optimal path in finite time.\nAlthough some strategies, notably informed sampling\n(Gammell et al., 2014) and its combination with path\noptimisation (Kim and Song, 2015), have been shown to\nbe effective in accelerating the RRT*’s convergence, this\nhas not been compared to similar acceleration of the basic\nRRT. Basic RRT-based planners are usually much faster\nthan RRT*-based planners, which would allow more time\nto improve the solution. This then raises the question of\nwhether applying informed sampling and path optimisa-\ntion can help the quick, though almost-surely suboptimal,\npath planners based on the basic RRT attain comparable\nor better performance than their RRT*-based counter-\nparts. In literature, the effectiveness of different path op-\ntimisers in accelerating convergence has not been studied.\nTo this end, we apply a combination of informed sampling\nand path optimisation to both planners based on the basic\nRRT and the RRT*, and compare their convergence rates.\nWe use different path optimisers, including path pruning,\nrandom shortcut, the wrapping process and gradient-based\npath optimisation (Geraerts and Overmars, 2007; Kim and\nSong, 2015; Campana et al., 2016).\nIn this work, the algorithms are presented in their most ba-\nsic form, wherein planned paths are piecewise linear. Such\npaths are commonly used for robots with no significant\ndifferential constraints or those with an onboard controller\nthat is capable of tracking such paths without sustaining\narXiv:2108.08051v4  [cs.RO]  29 Oct 2023\n\ncollisions. Adaptation for robots with significant differen-\ntial constraints is part of future work.\nThe paper is organised as follows: The benchmark basic\nRRT and RRT* that use informed sampling are presented\nin Section 2, followed by the path optimisers and their\napplication to the benchmark planners in Section 3. Com-\nparative results are presented in Section 4, followed by\nconclusions in Section 5.\n2. BENCHMARK PATH PLANNERS\nWe start this section by reviewing the basic RRT and\nexplain how the RRT* extends it. Thereafter, focus shifts\nto their informed versions – the benchmark path planners.\n2.1 Basic RRT and RRT*\nThe basic RRT grows a planning tree, T , rooted at the\ninitial configuration, qI , that explores the configuration\nspace, C. Its pseudocode is given in Alg. 1. The tree is\ngrown by iteratively sampling a random configuration,\nqsamp, and attempting to extend the tree towards it\n(lines 7–9). Tree nodes are reachable configurations and\nits edges are feasible paths by which the configurations\nare reached. To grow the tree, an existing node, qnearest,\nthat is closest to qsamp is selected (line 2). The newConfig\nfunction (line 3) then generates a configuration, qnew, that\ngets as close as possible to qsamp through a feasible and\ncollision-free edge from qnearest. The edge is computed\nusing a local path-planning method (LPM) and tested for\ncollisions using a collision detector before qnew is added.\nThis is performed by the insertNode function (line 4).\nOnce a node within a specified distance from the goal\nconfiguration, qG, is added, a solution path is considered\nfound; alternatively the goal may be occasionally sampled,\nand an attempt to add it made. Since the basic RRT\nalways extends the tree from the nearest existing node,\nregardless of its cost (see Fig. 1(a)), it does not attempt\nto improve path cost.\nAlgorithm 1: RRT(qI , qG)\n1F unctionextendRRT(T , qsamp)\n2qnearest ← nearestNeighbour(T , qsamp);\n3if newConfig(qnearest, qsamp, qnew) then\n4T .insertNode(qnearest, qnew);\n5F unctionmain()\n6T .initialise(qI );\n7for i = 1 :maxIterations do\n8qsamp ← randomConfig();\n9extendRRT(T , qsamp);\n10return T ;\nThe RRT* is an extension of the RRT that refines the tree\nwith every added node, so as to improve paths to the new\nnode and its neighbours. Its pseudocode is given in Alg. 2.\nFirstly, instead of simply connecting a new node via the\nnearest existing node, it considers multiple nodes within a\nspecified radius and chooses the cheapest as the new node’s\nparent (lines 5–7). Secondly, it considers the new node as\na replacement parent for neighbouring nodes if reaching\nsuch a node via the new node results in a cheaper path\nthan via the current parent. This is known as rewiring\n(line 8). The RRT* is asymptotically optimal, which\nmeans that the solution tends to the optimal solution as\nthe number o"
+              }
+            ]
+          }
+        }
+      ],
+      "ended_at": "2026-07-29T16:13:24"
+    }
+  ]
+}

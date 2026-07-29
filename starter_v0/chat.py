@@ -5,7 +5,7 @@ import json
 import re
 from datetime import datetime
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 
 from env_loader import load_lab_env
 from providers import make_provider
@@ -84,6 +84,7 @@ def run_model_tool_loop(
     tools: list[dict[str, Any]],
     model: str | None,
     max_tool_rounds: int,
+    on_tool_event: Callable[[dict[str, Any]], None] | None = None,
 ) -> dict[str, Any]:
     working_messages = list(messages)
     rounds: list[dict[str, Any]] = []
@@ -112,8 +113,21 @@ def run_model_tool_loop(
         non_clarification_events: list[dict[str, Any]] = []
 
         for call in calls:
+            if on_tool_event:
+                on_tool_event({
+                    "status": "calling",
+                    "round": round_index,
+                    "tool": call.name,
+                    "args": call.args,
+                })
             print(f"🔧 {call.name}({json.dumps(call.args, ensure_ascii=False, sort_keys=True)})")
             event = execute_tool_call(call)
+            if on_tool_event:
+                on_tool_event({
+                    "status": "completed",
+                    "round": round_index,
+                    **event,
+                })
             round_record["tool_results"].append(event)
             all_tool_events.append(event)
 
