@@ -1,7 +1,241 @@
 {
   "dataset_id": "day04_v2_research_group",
   "dataset_role": "group",
-  "description": "Template để NHÓM tự viết đúng 10 case: 5 single-turn dùng query và 5 multi-turn dùng turns. Mỗi case cần: id, phase='B', failure_type (thuộc allowed_failure_types), expect (tool_calls[...] hoặc no_tool=true), và metadata.what_it_tests. File để trống có chủ đích vì mỗi nhóm phải tự thiết kế các case này.",
-  "allowed_failure_types": ["wrong_tool", "wrong_arg_value", "wrong_boundary", "unnecessary_tool", "out_of_scope", "missing_info"],
-  "cases": []
+  "description": "Bộ đánh giá 10 eval cases cho đề tài Research Paper Scout: Tìm kiếm bài báo (papers), đọc nội dung (paper_text), lấy trích dẫn BibTeX (paper_bibtex), hỏi lại khi thiếu ID (clarify), và các giới hạn hành vi.",
+  "allowed_failure_types": [
+    "wrong_tool",
+    "wrong_arg_value",
+    "wrong_boundary",
+    "unnecessary_tool",
+    "out_of_scope",
+    "missing_info"
+  ],
+  "cases": [
+    {
+      "id": "G01_search_papers_arxiv",
+      "phase": "B",
+      "query": "Tìm cho mình các bài báo mới nhất về LLM Agent trên arXiv",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "papers",
+            "args": {
+              "query": "LLM Agent"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Routing đúng yêu cầu tìm kiếm bài báo khoa học đến tool papers."
+      }
+    },
+    {
+      "id": "G02_read_paper_text",
+      "phase": "B",
+      "query": "Đọc giúp mình nội dung bài báo arXiv id 1706.03762",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "paper_text",
+            "args": {
+              "arxiv_url": "1706.03762"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Routing lấy nội dung chi tiết bài báo từ arXiv ID bằng tool paper_text."
+      }
+    },
+    {
+      "id": "G03_get_paper_bibtex",
+      "phase": "B",
+      "query": "Cho mình xin trích dẫn BibTeX của bài báo https://arxiv.org/abs/2303.08774",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "paper_bibtex",
+            "args": {
+              "arxiv_url": "https://arxiv.org/abs/2303.08774"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Trích xuất trích dẫn BibTeX chuẩn bằng tool mới paper_bibtex."
+      }
+    },
+    {
+      "id": "G04_missing_paper_id_clarify",
+      "phase": "B",
+      "query": "Tạo giúp mình mã BibTeX cho bài báo này với",
+      "failure_type": "missing_info",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "text"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Khi người dùng xin mã BibTeX nhưng không cung cấp arXiv ID/URL, agent phải gọi tool clarify để hỏi."
+      }
+    },
+    {
+      "id": "G05_out_of_scope_math",
+      "phase": "B",
+      "query": "Tính đạo hàm bậc nhất của hàm số y = 3x^2 + 5x - 2",
+      "failure_type": "out_of_scope",
+      "expect": {
+        "no_tool": true
+      },
+      "metadata": {
+        "what_it_tests": "Các câu hỏi tính toán toán học thuần túy ngoài phạm vi nghiên cứu bài báo -> KHÔNG gọi tool."
+      }
+    },
+    {
+      "id": "G06_search_then_get_bibtex",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tìm bài báo Attention Is All You Need giúp mình"
+        },
+        {
+          "role": "user",
+          "content": "Cho mình xin mã BibTeX của bài báo này luôn nhé (id: 1706.03762)"
+        }
+      ],
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "paper_bibtex",
+            "args": {
+              "arxiv_url": "1706.03762"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Chuyển đổi ý định từ tìm kiếm bài báo sang lấy trích dẫn BibTeX ở lượt tiếp theo."
+      }
+    },
+    {
+      "id": "G07_carryover_max_pages",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tóm tắt bài báo https://arxiv.org/abs/2303.08774"
+        },
+        {
+          "role": "user",
+          "content": "Đọc sâu hơn, tối đa 10 trang giúp mình"
+        }
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "paper_text",
+            "args": {
+              "arxiv_url": "https://arxiv.org/abs/2303.08774",
+              "max_pages": 10
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Kế thừa arxiv_url từ turn 1 và cập nhật tham số max_pages=10 ở lượt hiện tại."
+      }
+    },
+    {
+      "id": "G08_clarify_then_read_paper",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Đọc nội dung bài báo khoa học này hộ mình"
+        },
+        {
+          "role": "user",
+          "content": "ID là 2203.02155 nhé"
+        }
+      ],
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "paper_text",
+            "args": {
+              "arxiv_url": "2203.02155"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Sau khi người dùng bổ sung arXiv ID ở lượt 2, agent gọi đúng tool paper_text."
+      }
+    },
+    {
+      "id": "G09_confirm_before_send_bibtex",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Lấy cho mình BibTeX của bài 1706.03762"
+        },
+        {
+          "role": "user",
+          "content": "Đăng trích dẫn này lên channel Telegram giúp mình"
+        }
+      ],
+      "failure_type": "wrong_boundary",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "yes_no"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Hành động gửi trích dẫn lên Telegram bắt buộc phải xin xác nhận yes/no qua clarify trước khi thực hiện."
+      }
+    },
+    {
+      "id": "G10_multi_no_tool_chat",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tìm bài báo về Transformer"
+        },
+        {
+          "role": "user",
+          "content": "Cảm ơn bạn, mình đã đọc xong rồi."
+        },
+        {
+          "role": "user",
+          "content": "Bạn có thể hỗ trợ mình công việc gì khác liên quan đến nghiên cứu bài báo không?"
+        }
+      ],
+      "failure_type": "unnecessary_tool",
+      "expect": {
+        "no_tool": true
+      },
+      "metadata": {
+        "what_it_tests": "Khi người dùng giao tiếp cảm ơn hoặc hỏi về năng lực của agent ở lượt cuối, agent trả lời bằng văn bản và KHÔNG gọi tool."
+      }
+    }
+  ]
 }
