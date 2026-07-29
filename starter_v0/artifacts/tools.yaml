@@ -9,7 +9,10 @@
 tools:
   # ---------------- Core tools ----------------
   - name: clarify
-    description: "Gửi một câu hỏi cho người dùng."
+    description: "Hỏi người dùng khi thiếu thông tin bắt buộc hoặc cần xác nhận trước hành động nhạy cảm.
+      Dùng response_type=text khi cần thông tin (handle, URL, chủ đề).
+      Dùng response_type=yes_no để xác nhận trước khi gửi/publish.
+      KHÔNG đoán — luôn hỏi khi thiếu handle hoặc URL."
     parameters:
       type: object
       properties:
@@ -19,7 +22,9 @@ tools:
       required: [question]
 
   - name: timeline
-    description: "Lấy các bài đăng gần đây."
+    description: "Lấy các bài đăng gần đây của MỘT tài khoản cụ thể (Twitter/X).
+      Dùng khi user hỏi về tin của một người: map tên thường sang handle (Sam Altman → sama, Elon Musk → elonmusk, Andrej Karpathy → karpathy).
+      KHÔNG dùng khi user hỏi về một chủ đề — dùng social_search thay thế."
     parameters:
       type: object
       properties:
@@ -28,7 +33,10 @@ tools:
       required: [screenname]
 
   - name: social_search
-    description: "Tìm trên mạng xã hội."
+    description: "Tìm bài đăng trên mạng xã hội theo TỪ KHÓA hoặc CHỦ ĐỀ.
+      Dùng khi user hỏi \"mọi người đang nói gì về X\", \"tweet về X\".
+      search_type=Top cho \"phổ biến/top\"; search_type=Latest (default) cho mới nhất.
+      KHÔNG dùng khi hỏi về tài khoản cụ thể — dùng timeline thay thế."
     parameters:
       type: object
       properties:
@@ -38,7 +46,11 @@ tools:
       required: [query]
 
   - name: lookup
-    description: "Tra cứu thông tin trên internet."
+    description: "Tìm kiếm thông tin trên web. Hai chế độ:
+      - topic=news: cho tin tức thời sự. Kết hợp timeframe: day=\"hôm nay\", week=\"tuần này\", month=\"tháng này\".
+      - topic=general (default): tra cứu thông tin chung.
+      Dùng topic=news + timeframe=day khi user hỏi \"tin hôm nay\", \"tin mới nhất\".
+      KHÔNG dùng khi đã có URL cụ thể — dùng fetch."
     parameters:
       type: object
       properties:
@@ -49,7 +61,9 @@ tools:
       required: [query]
 
   - name: fetch
-    description: "Lấy nội dung từ một địa chỉ."
+    description: "Đọc nội dung từ một URL cụ thể đã được cung cấp.
+      Dùng khi user đưa link và muốn tóm tắt/đọc nội dung.
+      KHÔNG dùng khi không có URL — dùng clarify để hỏi URL trước."
     parameters:
       type: object
       properties:
@@ -79,7 +93,9 @@ tools:
 
   # ---------------- Bonus tools ----------------
   - name: send
-    description: "Gửi một đoạn văn bản đi."
+    description: "Gửi văn bản lên kênh Telegram. Hành động KHÔNG THỂ hoàn tác.
+      PHẢI có xác nhận của user (qua clarify yes_no) trước khi gọi.
+      confirmed=true chỉ khi user đã xác nhận rõ ràng trong lượt hiện tại."
     parameters:
       type: object
       properties:
